@@ -1,5 +1,4 @@
 <?php
-require_once '../config.php';
 class Login extends DBConnection {
 	private $settings;
 	public function __construct(){
@@ -39,7 +38,7 @@ class Login extends DBConnection {
 	}
 	function login_user(){
 		extract($_POST);
-		$qry = $this->conn->query("SELECT * from clients where email = '$email' and password = md5('$password') ");
+		$qry = $this->conn->query("SELECT * from clients where email = ' ' and password = md5(' ') ");
 		if($qry->num_rows > 0){
 			foreach($qry->fetch_array() as $k => $v){
 				$this->settings->set_userdata($k,$v);
